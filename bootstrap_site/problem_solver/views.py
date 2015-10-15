@@ -2,6 +2,9 @@ from django.shortcuts import render
 
 from .forms import CapitaliseForm
 
+def index(request):
+    return render(request, 'index.html')
+
 def capitalise(request):
     form = CapitaliseForm(request.POST or None)
     context = {
