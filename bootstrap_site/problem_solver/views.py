@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .forms import CapitaliseForm
+from .forms import CapitaliseForm, ArabicNumeralsForm
 
 def index(request):
     return render(request, 'index.html')
@@ -21,3 +21,28 @@ def capitalise(request):
         }
 
     return render(request, 'capitalise.html', context)
+
+
+import roman
+
+def arabic_numerals(request):
+    form = ArabicNumeralsForm(request.POST or None)
+    context = {
+        "form": form,
+    }
+
+    if form.is_valid():
+        numerals = form.cleaned_data.get("roman_numerals")
+
+        try:
+            numerals = roman.fromRoman(numerals.upper())
+        except:
+            numerals = "unable to convert: " + \
+                       form.cleaned_data.get("roman_numerals")
+
+        context = {
+            "form": form,
+            "arabic_numerals": numerals,
+        }
+
+    return render(request, 'arabic_numerals.html', context)
