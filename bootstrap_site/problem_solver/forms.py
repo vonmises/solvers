@@ -5,3 +5,9 @@ class CapitaliseForm(forms.Form):
             "class": "form-control",
             "placeholder": "text to capitalise",
             }))
+
+class ArabicNumeralsForm(forms.Form):
+    roman_numerals = forms.CharField(widget=forms.TextInput({
+            "class": "form-control",
+            "placeholder": "Enter Roman Numerals",
+            }))
