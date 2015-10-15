@@ -18,6 +18,9 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^$', 'problem_solver.views.index', name='home'),
-    url(r'^capitalise/$', 'problem_solver.views.capitalise', name='capitalise'),
+    url(r'^capitalise/$', 'problem_solver.views.capitalise',
+        name='capitalise'),
+    url(r'^arabic_numerals/$', 'problem_solver.views.arabic_numerals',
+        name='arabic_numerals'),
     url(r'^admin/', include(admin.site.urls)),
 ]
